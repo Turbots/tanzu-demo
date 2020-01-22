@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        payments:
+          group: 'b2b-confirmation'
+          consumer:
+            prefetch: 100
