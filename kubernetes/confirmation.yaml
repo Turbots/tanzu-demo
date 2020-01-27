@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: b2b-confirmation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: b2b-confirmation
+  template:
+    metadata:
+      labels:
+        app: b2b-confirmation
+    spec:
+      containers:
+        - name: b2b-confirmation
+          image: docker.io/dhubau/b2b-confirmation:latest
+          imagePullPolicy: Always
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          resources:
+            requests:
+              memory: 1024Mi
+              cpu: 500m
+            limits:
+              memory: 1048Mi
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: b2b-confirmation
+  labels:
+    app: b2b-confirmation
+spec:
+  ports:
+    - name: http
+      port: 8080
+  selector:
+    app: b2b-confirmation
