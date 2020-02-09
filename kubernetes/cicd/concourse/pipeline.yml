@@ -16,6 +16,7 @@ resources:
 - name: container-image
   type: docker-image
   icon: docker
+  check_every: 30s
   source:
     repository: ((container-image))
 
