@@ -33,10 +33,10 @@ spec:
             - name: SPRING_RABBITMQ_HOST
               value: rabbitmq
             - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
                 secretKeyRef:
                   name: rabbitmq
                   key: rabbitmq-password
-              valueFrom:
           resources:
             requests:
               memory: 1024Mi
