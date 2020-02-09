@@ -3,7 +3,7 @@ apiVersion: experimental.kpack.pivotal.io/v1alpha1
 kind: Stack
 metadata:
   name: bionic-stack
-  namespace: kpack-builders
+  namespace: kpack
 spec:
   id: "io.buildpacks.stacks.bionic"
   buildImage:

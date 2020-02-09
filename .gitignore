@@ -2,3 +2,4 @@
 .idea/
 /kubernetes/cicd/kpack/02-github-creds.yml
 /kubernetes/cicd/kpack/03-dockerhub-creds.yml
+/b2b-confirmation/target/
