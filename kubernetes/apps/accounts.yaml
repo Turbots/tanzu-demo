@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: b2b-payments
+  name: b2b-accounts
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: b2b-payments
+      app: b2b-accounts
   template:
     metadata:
       labels:
-        app: b2b-payments
+        app: b2b-accounts
     spec:
       containers:
-        - name: b2b-payments
-          image: docker.io/dhubau/b2b-payments:latest
+        - name: b2b-accounts
+          image: docker.io/dhubau/b2b-accounts:latest
           imagePullPolicy: Always
           env:
             - name: NODE_NAME
@@ -30,24 +30,31 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+            - name: SPRING_REDIS_HOST
+              value: redis
+            - name: SPRING_REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
           resources:
             requests:
               memory: 1024Mi
               cpu: 500m
             limits:
-              memory: 1048Mi
+              memory: 1024Mi
           ports:
             - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: b2b-payments
+  name: b2b-accounts
   labels:
-    app: b2b-payments
+    app: b2b-accounts
 spec:
   ports:
     - name: http
       port: 8080
   selector:
-    app: b2b-payments
+    app: b2b-accounts

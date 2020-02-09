@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kpack-service-account
+  namespace: kpack
+secrets:
+  - name: dockerhub-creds
+  - name: github-creds
+---
+apiVersion: experimental.kpack.pivotal.io/v1alpha1
+kind: Store
+metadata:
+  name: custom-java-store
+  namespace: kpack
+spec:
+  sources:
+  - image: cloudfoundry/cnb:0.0.40-bionic
+---
+apiVersion: experimental.kpack.pivotal.io/v1alpha1
+kind: Stack
+metadata:
+  name: bionic-stack
+  namespace: kpack
+spec:
+  id: "io.buildpacks.stacks.bionic"
+  buildImage:
+    image: "cloudfoundry/build:0.0.1-full-cnb"
+  runImage:
+    image: "cloudfoundry/run:0.0.1-full-cnb"
+---
+apiVersion: experimental.kpack.pivotal.io/v1alpha1
+kind: CustomBuilder
+metadata:
+  name: custom-java-builder
+  namespace: kpack
+spec:
+  tag: alexandreroman/kpack-custom-java-builder
+  serviceAccount: kpack-service-account
+  stack: bionic-stack
+  store: custom-java-store
+  order:
+  - group:
+    - id: org.cloudfoundry.openjdk
+    - id: org.cloudfoundry.buildsystem
+      optional: true
+    - id: org.cloudfoundry.jvmapplication 
+    - id: org.cloudfoundry.springboot
+      optional: true

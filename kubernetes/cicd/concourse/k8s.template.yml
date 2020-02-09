@@ -1,0 +1,14 @@
+kubernetes-config: |
+  >--- PASTE YOUR .kube/config HERE ---<
+
+# Select a context from the Kubernetes config. Leave empty to use default context.
+kubernetes-context:
+
+# Match this attribute with your cluster version.
+kubernetes-version: 1.15
+
+# Set to true to disable TLS verification when using kubectl commands.
+kubernetes-skip-tls-verification: false
+
+# Set how long to wait for pods to run (seconds), 0 means "don't wait".
+kubernetes-wait-until-ready: 180

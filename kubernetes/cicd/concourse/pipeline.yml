@@ -1,0 +1,33 @@
+resource_types:
+- name: kubernetes
+  type: docker-image
+  source:
+    repository: zlabjp/kubernetes-resource
+    tag: "{{kubernetes-version}}"
+resources:
+- name: kubernetes-cluster
+  type: kubernetes
+  icon: kubernetes
+  source:
+    insecure_skip_tls_verify: {{kubernetes-skip-tls-verification}}
+    kubeconfig: {{kubernetes-config}}
+    context: {{kubernetes-context}}
+    namespace: default
+- name: container-image
+  type: docker-image
+  icon: docker
+  source:
+    repository: ((container-image))
+
+jobs:
+- name: deploy-latest-container-image
+  plan:
+  - get: container-image
+    trigger: true
+    params:
+      skip_download: true
+  - put: kubernetes-cluster
+    params:
+      kubectl: |
+        set image deployment ((kubernetes-deployment)) ((kubernetes-container))=$(cat container-image/repository)@$(cat container-image/digest)
+      wait_until_ready: {{kubernetes-wait-until-ready}}
