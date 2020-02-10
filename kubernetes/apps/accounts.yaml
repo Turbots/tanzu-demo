@@ -19,7 +19,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: SERVER_PORT
-              value: 8080
+              value: "8080"
             - name: NODE_NAME
               valueFrom:
                 fieldRef:
