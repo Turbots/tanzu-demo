@@ -34,7 +34,7 @@ metadata:
   name: custom-java-builder
   namespace: kpack
 spec:
-  tag: alexandreroman/kpack-custom-java-builder
+  tag: dhubau/kpack-custom-java-builder
   serviceAccount: kpack-service-account
   stack: bionic-stack
   store: custom-java-store

@@ -55,8 +55,10 @@ metadata:
   labels:
     app: b2b-payments
 spec:
+  type: LoadBalancer
   ports:
     - name: http
-      port: 8080
+      port: 80
+      targetPort: 8080
   selector:
     app: b2b-payments

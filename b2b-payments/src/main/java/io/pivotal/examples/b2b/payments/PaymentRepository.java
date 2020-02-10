@@ -6,8 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
+
+    List<Payment> findTop50ByOrderByIdDesc();
 
     @Modifying
     @Query("update Payment p set p.paymentStatus = :status where p.paymentId = :id")
