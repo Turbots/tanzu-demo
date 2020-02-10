@@ -39,6 +39,15 @@ spec:
                 secretKeyRef:
                   name: redis
                   key: redis-password
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_USERNAME
+              value: user
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rabbitmq
+                  key: rabbitmq-password
           resources:
             requests:
               memory: 1024Mi

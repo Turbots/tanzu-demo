@@ -28,7 +28,7 @@ public class PaymentProcessor {
     public void confirmation(PaymentConfirmation confirmation) {
         LOGGER.info("Payment Confirmation [{}]", confirmation.getPaymentId());
 
-        Payment payment = this.restTemplate.getForObject("http://localhost:8080/{paymentId}", Payment.class, confirmation.getPaymentId());
+        Payment payment = this.restTemplate.getForObject("http://payments/{paymentId}", Payment.class, confirmation.getPaymentId());
 
         if (payment != null) {
             LOGGER.info("Processing Payment [{}] with amount [{}]", payment.getPaymentId(), payment.getAmount());
