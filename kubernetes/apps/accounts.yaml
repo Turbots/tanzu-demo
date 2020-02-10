@@ -48,6 +48,8 @@ spec:
                 secretKeyRef:
                   name: rabbitmq
                   key: rabbitmq-password
+            - name: PAYMENTS_HOST
+              value: b2b-payments
           resources:
             requests:
               memory: 1024Mi

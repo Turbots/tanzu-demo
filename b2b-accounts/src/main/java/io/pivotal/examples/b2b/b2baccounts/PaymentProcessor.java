@@ -2,6 +2,7 @@ package io.pivotal.examples.b2b.b2baccounts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,9 @@ public class PaymentProcessor {
     private final AccountRepository accountRepository;
     private final RestTemplate restTemplate;
 
+    @Value("${payments.host:localhost:8080}")
+    private String paymentsHost;
+
     public PaymentProcessor(AccountRepository accountRepository, RestTemplate restTemplate) {
         this.accountRepository = accountRepository;
         this.restTemplate = restTemplate;
@@ -28,7 +32,7 @@ public class PaymentProcessor {
     public void confirmation(PaymentConfirmation confirmation) {
         LOGGER.info("Payment Confirmation [{}]", confirmation.getPaymentId());
 
-        Payment payment = this.restTemplate.getForObject("http://payments/{paymentId}", Payment.class, confirmation.getPaymentId());
+        Payment payment = this.restTemplate.getForObject("http://" + paymentsHost + "/{paymentId}", Payment.class, confirmation.getPaymentId());
 
         if (payment != null) {
             LOGGER.info("Processing Payment [{}] with amount [{}]", payment.getPaymentId(), payment.getAmount());
