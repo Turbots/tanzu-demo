@@ -50,6 +50,18 @@ spec:
                   key: rabbitmq-password
             - name: PAYMENTS_HOST
               value: b2b-payments
+          livenessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 3
+            httpGet:
+              path: /actuator/info
+              port: 8080
+          readinessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            httpGet:
+              path: /actuator/health
+              port: 8080
           resources:
             requests:
               memory: 1024Mi
