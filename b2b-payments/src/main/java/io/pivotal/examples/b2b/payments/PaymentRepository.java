@@ -13,7 +13,10 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     List<Payment> findTop50ByOrderByIdDesc();
 
+    Payment findOneByPaymentId(String paymentId);
+
     @Modifying
     @Query("update Payment p set p.paymentStatus = :status where p.paymentId = :id")
     void confirmPayment(@Param("id") String paymentId, @Param("status") PaymentStatus status);
+
 }

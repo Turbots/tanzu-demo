@@ -18,6 +18,8 @@ spec:
           image: docker.io/dhubau/b2b-accounts:latest
           imagePullPolicy: Always
           env:
+            - name: SERVER_PORT
+              value: 8080
             - name: NODE_NAME
               valueFrom:
                 fieldRef:

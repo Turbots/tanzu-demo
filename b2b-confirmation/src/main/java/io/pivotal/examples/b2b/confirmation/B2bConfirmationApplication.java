@@ -6,9 +6,9 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 
 @SpringBootApplication
 @EnableBinding(PaymentChannels.class)
-public class PaymentConfirmationApplication {
+public class B2bConfirmationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PaymentConfirmationApplication.class, args);
+        SpringApplication.run(B2bConfirmationApplication.class, args);
     }
 }
