@@ -50,6 +50,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Metrics going to Wavefront -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-wavefront</artifactId>
+        </dependency>
+
         <!-- Developer Tools - will NOT be packaged in the final artifact -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -50,6 +50,13 @@ spec:
                   key: rabbitmq-password
             - name: PAYMENTS_HOST
               value: b2b-payments
+            - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
+              value: 'proxy://wavefront-proxy:2878'
+            - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: wavefront
+                  key: token
           livenessProbe:
             initialDelaySeconds: 10
             periodSeconds: 3

@@ -39,6 +39,13 @@ spec:
                 secretKeyRef:
                   name: rabbitmq
                   key: rabbitmq-password
+            - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
+              value: 'proxy://wavefront-proxy:2878'
+            - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: wavefront
+                  key: token
           resources:
             requests:
               memory: 1024Mi

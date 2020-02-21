@@ -1,5 +1,6 @@
-.iml
+*.iml
 .idea/
 /kubernetes/cicd/kpack/02-github-creds.yml
 /kubernetes/cicd/kpack/03-dockerhub-creds.yml
-/b2b-confirmation/target/
+/kubernetes/metrics/wavefront-proxy.yaml
+/kubernetes/metrics/wavefront-token.yaml

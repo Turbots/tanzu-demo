@@ -8,6 +8,9 @@ spring:
       ddl-auto: validate
       id:
         new_generator_mappings: false
+    properties:
+      hibernate:
+        generate_statistics: true
   flyway:
     baseline-on-migrate: true
   datasource:
