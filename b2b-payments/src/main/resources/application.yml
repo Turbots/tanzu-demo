@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: b2b-payments
   data:
     jpa:
       repositories:
@@ -16,7 +18,3 @@ spring:
   datasource:
     hikari:
       jdbc-url: 'jdbc:h2:mem:paymentdb'
-opentracing:
-  jaeger:
-    http-sender:
-      url: 'http://wavefront-proxy:14267/api/traces'

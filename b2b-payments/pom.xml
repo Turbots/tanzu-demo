@@ -8,7 +8,7 @@
         <version>2.2.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>nl.rabobank.payments</groupId>
+    <groupId>io.pivotal.examples.b2b</groupId>
     <artifactId>b2b-payments</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>b2b-payments</name>

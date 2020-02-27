@@ -8,7 +8,7 @@
         <version>2.2.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.pivotal.examples</groupId>
+    <groupId>io.pivotal.examples.b2b</groupId>
     <artifactId>b2b-confirmation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>b2b-confirmation</name>
@@ -54,6 +54,17 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-wavefront</artifactId>
+        </dependency>
+        <!-- Opentracing in Jaeger format -->
+        <dependency>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-spring-jaeger-web-starter</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>io.opentracing.contrib</groupId>
+            <artifactId>opentracing-spring-jaeger-cloud-starter</artifactId>
+            <version>2.0.3</version>
         </dependency>
 
         <!-- Developer Tools - will NOT be packaged in the final artifact -->

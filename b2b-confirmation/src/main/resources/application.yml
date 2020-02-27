@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: b2b-confirmation
   cloud:
     stream:
       bindings:

@@ -57,6 +57,8 @@ spec:
                 secretKeyRef:
                   name: wavefront
                   key: token
+            - name: OPENTRACING_JAEGER_HTTP_SENDER
+              value: 'http://wavefront-proxy:14267'
           livenessProbe:
             initialDelaySeconds: 10
             periodSeconds: 3

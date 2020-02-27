@@ -7,7 +7,7 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.pivotal.examples</groupId>
+	<groupId>io.pivotal.examples.b2b</groupId>
 	<artifactId>b2b-batch</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>b2b-batch</name>
