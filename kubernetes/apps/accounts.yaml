@@ -33,7 +33,7 @@ spec:
                 fieldRef:
                   fieldPath: status.podIP
             - name: SPRING_REDIS_HOST
-              value: redis
+              value: redis-master
             - name: SPRING_REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
