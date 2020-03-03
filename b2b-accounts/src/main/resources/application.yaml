@@ -1,8 +1,9 @@
 management:
-  endpoint:
+  endpoints:
     web:
       exposure:
         include: '*'
+  endpoint:
     health:
       show-details: always
 server:
@@ -16,5 +17,8 @@ spring:
         confirmations:
           group: accounts
   zipkin:
+    discovery-client-enabled: false
     service:
       name: Accounts
+    sender:
+      type: web
