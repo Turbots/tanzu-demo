@@ -8,3 +8,6 @@ spring:
           group: 'b2b-confirmation'
           consumer:
             prefetch: 100
+  zipkin:
+    service:
+      name: Confirmation

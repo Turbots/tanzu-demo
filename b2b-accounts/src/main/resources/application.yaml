@@ -1,0 +1,20 @@
+management:
+  endpoint:
+    web:
+      exposure:
+        include: '*'
+    health:
+      show-details: always
+server:
+  port: 8081
+spring:
+  application:
+    name: b2b-accounts
+  cloud:
+    stream:
+      bindings:
+        confirmations:
+          group: accounts
+  zipkin:
+    service:
+      name: Accounts

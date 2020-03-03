@@ -5,6 +5,7 @@ metadata:
   name: b2b-accounts
 spec:
   replicas: 1
+  revisionHistoryLimit: 2 # LIMITS THE AMOUNT OF OLD REPLICASETS
   selector:
     matchLabels:
       app: b2b-accounts
@@ -50,6 +51,8 @@ spec:
                   key: rabbitmq-password
             - name: PAYMENTS_HOST
               value: b2b-payments
+            - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_ENABLED
+              value: true
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
               value: 'proxy://wavefront-proxy:2878'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_API_TOKEN
@@ -57,8 +60,10 @@ spec:
                 secretKeyRef:
                   name: wavefront
                   key: token
-            - name: OPENTRACING_JAEGER_HTTP_SENDER
-              value: 'http://wavefront-proxy:14267'
+            - name: SPRING_ZIPKIN_ENABLED
+              value: true
+            - name: SPRING_ZIPKIN_BASE_URL
+              value: 'http://wavefront-proxy:9411'
           livenessProbe:
             initialDelaySeconds: 10
             periodSeconds: 3

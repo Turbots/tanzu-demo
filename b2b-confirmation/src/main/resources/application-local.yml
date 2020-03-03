@@ -1,0 +1,8 @@
+spring:
+  zipkin:
+    enabled: false
+management:
+  metrics:
+    export:
+      wavefront:
+        enabled: false

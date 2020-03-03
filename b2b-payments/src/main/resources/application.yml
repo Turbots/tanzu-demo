@@ -18,3 +18,6 @@ spring:
   datasource:
     hikari:
       jdbc-url: 'jdbc:h2:mem:paymentdb'
+  zipkin:
+    service:
+      name: Payments

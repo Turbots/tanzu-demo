@@ -13,6 +13,7 @@ spec:
       labels:
         app: b2b-payments
     spec:
+      revisionHistoryLimit: 2 # LIMITS THE AMOUNT OF OLD REPLICASETS
       containers:
         - name: b2b-payments
           image: docker.io/dhubau/b2b-payments:latest
@@ -39,6 +40,8 @@ spec:
                 secretKeyRef:
                   name: rabbitmq
                   key: rabbitmq-password
+            - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_ENABLED
+              value: true
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
               value: 'proxy://wavefront-proxy:2878'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_API_TOKEN
@@ -46,8 +49,10 @@ spec:
                 secretKeyRef:
                   name: wavefront
                   key: token
-            - name: OPENTRACING_JAEGER_HTTP_SENDER
-              value: 'http://wavefront-proxy:14267'
+            - name: SPRING_ZIPKIN_ENABLED
+              value: true
+            - name: SPRING_ZIPKIN_BASE_URL
+              value: 'http://wavefront-proxy:9411'
           resources:
             requests:
               memory: 1024Mi
