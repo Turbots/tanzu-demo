@@ -5,7 +5,7 @@ metadata:
   name: b2b-accounts
 spec:
   replicas: 1
-  revisionHistoryLimit: 2 # LIMITS THE AMOUNT OF OLD REPLICASETS
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: b2b-accounts
@@ -52,7 +52,7 @@ spec:
             - name: PAYMENTS_HOST
               value: b2b-payments
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_ENABLED
-              value: true
+              value: 'true'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
               value: 'proxy://wavefront-proxy:2878'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_API_TOKEN
@@ -61,11 +61,11 @@ spec:
                   name: wavefront
                   key: token
             - name: SPRING_ZIPKIN_ENABLED
-              value: true
+              value: 'true'
             - name: SPRING_ZIPKIN_BASE_URL
               value: 'http://wavefront-proxy:9411'
           livenessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 15
             periodSeconds: 3
             httpGet:
               path: /actuator/info
