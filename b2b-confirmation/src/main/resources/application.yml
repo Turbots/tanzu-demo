@@ -9,5 +9,8 @@ spring:
           consumer:
             prefetch: 100
   zipkin:
+    discovery-client-enabled: false
     service:
       name: Confirmation
+    sender:
+      type: web
