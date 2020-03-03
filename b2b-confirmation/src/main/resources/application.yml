@@ -11,6 +11,11 @@ spring:
   zipkin:
     discovery-client-enabled: false
     service:
-      name: Confirmation
+      name: b2b-confirmation
     sender:
       type: web
+management:
+  metrics:
+    export:
+      wavefront:
+        source: b2b-confirmation

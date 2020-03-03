@@ -6,6 +6,10 @@ management:
   endpoint:
     health:
       show-details: always
+  metrics:
+    export:
+      wavefront:
+        source: b2b-payments
 spring:
   application:
     name: b2b-payments
@@ -26,6 +30,6 @@ spring:
   zipkin:
     discovery-client-enabled: false
     service:
-      name: Payments
+      name: b2b-payments
     sender:
       type: web

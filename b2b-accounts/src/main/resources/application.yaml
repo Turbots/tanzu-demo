@@ -6,6 +6,10 @@ management:
   endpoint:
     health:
       show-details: always
+  metrics:
+    export:
+      wavefront:
+        source: b2b-accounts
 server:
   port: 8081
 spring:
@@ -19,6 +23,6 @@ spring:
   zipkin:
     discovery-client-enabled: false
     service:
-      name: Accounts
+      name: b2b-accounts
     sender:
       type: web
