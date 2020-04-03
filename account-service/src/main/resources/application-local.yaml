@@ -1,0 +1,10 @@
+management:
+  metrics:
+    export:
+      wavefront:
+        enabled: false
+spring:
+  zipkin:
+    enabled: false
+server:
+  port: 8081

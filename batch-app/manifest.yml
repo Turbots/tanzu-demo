@@ -1,0 +1,7 @@
+---
+applications:
+  - name: b2b-batch
+    instances: 0
+    health-check-type: process
+    no-route: true
+    path: target/b2b-batch.jar

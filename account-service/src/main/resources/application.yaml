@@ -1,0 +1,26 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      wavefront:
+        source: accounts
+spring:
+  application:
+    name: accounts
+  cloud:
+    stream:
+      bindings:
+        confirmations:
+          group: accounts
+  zipkin:
+    discovery-client-enabled: false
+    service:
+      name: accounts
+    sender:
+      type: web

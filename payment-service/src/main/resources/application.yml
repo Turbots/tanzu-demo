@@ -1,0 +1,35 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      wavefront:
+        source: b2b-payments
+spring:
+  application:
+    name: b2b-payments
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: LAZY
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      id:
+        new_generator_mappings: false
+  flyway:
+    baseline-on-migrate: true
+  datasource:
+    hikari:
+      jdbc-url: 'jdbc:h2:mem:paymentdb'
+  zipkin:
+    discovery-client-enabled: false
+    service:
+      name: b2b-payments
+    sender:
+      type: web

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: b2b-confirmation
+  cloud:
+    stream:
+      bindings:
+        payments:
+          group: 'b2b-confirmation'
+          consumer:
+            prefetch: 100
+  zipkin:
+    discovery-client-enabled: false
+    service:
+      name: b2b-confirmation
+    sender:
+      type: web
+management:
+  metrics:
+    export:
+      wavefront:
+        source: b2b-confirmation
