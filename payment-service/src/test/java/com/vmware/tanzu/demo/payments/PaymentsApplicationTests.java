@@ -1,10 +1,10 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class B2bPaymentsApplicationTests {
+class PaymentsApplicationTests {
 
     @Test
     void contextLoads() {

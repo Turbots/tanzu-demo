@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.confirmation;
+package com.vmware.tanzu.demo.confirmation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 
 @SpringBootApplication
 @EnableBinding(PaymentChannels.class)
-public class B2bConfirmationApplication {
+public class ConfirmationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(B2bConfirmationApplication.class, args);
+        SpringApplication.run(ConfirmationApplication.class, args);
     }
 }

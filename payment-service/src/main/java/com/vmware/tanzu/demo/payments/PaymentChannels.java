@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;

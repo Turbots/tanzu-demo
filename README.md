@@ -1,3 +1,5 @@
+![Tanzu](tanzu-logo.png)
+
 # VMware Tanzu Demo
 
 Demo material for developers on [VMware Tanzu](https://tanzu.vmware.com/).

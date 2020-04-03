@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class PaymentConfig implements AsyncConfigurer {
         executor.setCorePoolSize(5);
         executor.setMaxPoolSize(5);
         executor.setQueueCapacity(50000);
-        executor.setThreadNamePrefix("b2b-payment-executor-");
+        executor.setThreadNamePrefix("payment-executor-");
         executor.initialize();
         return executor;
     }

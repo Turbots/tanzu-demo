@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.confirmation;
+package com.vmware.tanzu.demo.confirmation;
 
 public class Payment {
 

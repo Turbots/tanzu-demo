@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 public enum PaymentStatus {
 

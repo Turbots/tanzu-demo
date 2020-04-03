@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ public class PaymentConfirmationProcessor {
     @Transactional
     @StreamListener(PaymentChannels.CONFIRMATIONS)
     public void confirmation(PaymentConfirmation paymentConfirmation) {
-        LOGGER.info("Payment Confirmation - payment [{}]", paymentConfirmation.getPaymentId());
+        LOGGER.info("[Confirmation] - Payment [{}]", paymentConfirmation.getPaymentId());
 
         this.paymentRepository.confirmPayment(paymentConfirmation.getPaymentId(), PaymentStatus.CONFIRMED);
     }

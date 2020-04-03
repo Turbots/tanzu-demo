@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class PaymentMessaging {
 
     @Async
     public void sendPaymentMessage(@NotNull final Payment payment) {
-        LOGGER.info("Sending Payment Message for [{}]", payment.getPaymentId());
+        LOGGER.info("[Payment] for [{}]", payment.getPaymentId());
         this.paymentChannels.payments().send(new GenericMessage<>(payment));
     }
 }

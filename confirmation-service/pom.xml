@@ -5,18 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.M2</version>
+        <version>2.3.0.M3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.pivotal.examples.b2b</groupId>
-    <artifactId>b2b-confirmation</artifactId>
+    <groupId>com.vmware.tanzu.demo</groupId>
+    <artifactId>confirmation-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>b2b-confirmation</name>
-    <description>Example Application for B2B payment confirmations</description>
+    <name>confirmation-service</name>
+    <description>Payment Confirmation Service for the Tanzu Demo</description>
 
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -132,7 +132,7 @@
     </pluginRepositories>
 
     <build>
-        <finalName>b2b-confirmation</finalName>
+        <finalName>confirmation-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.M2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.0.M3</version>
+        <relativePath/>
+        <!-- lookup parent from repository -->
     </parent>
-    <groupId>io.pivotal.examples.b2b</groupId>
-    <artifactId>b2b-payments</artifactId>
+    <groupId>com.vmware.tanzu.demo</groupId>
+    <artifactId>payment-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>b2b-payments</name>
-    <description>Example Single Instance Application for B2B payments</description>
+    <name>payment-service</name>
+    <description>Payment Service for Tanzu Demo</description>
 
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -105,7 +107,7 @@
     </dependencies>
 
     <build>
-        <finalName>b2b-payments</finalName>
+        <finalName>payment-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

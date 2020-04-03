@@ -1,4 +1,4 @@
-package io.pivotal.examples.b2b.payments;
+package com.vmware.tanzu.demo.payments;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.constraints.NotNull;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class PaymentProcessor {
@@ -35,6 +36,8 @@ public class PaymentProcessor {
 
     private void transact(final Payment payment) throws InterruptedException {
         LOGGER.debug("Performing transaction...");
+
+        Thread.sleep(ThreadLocalRandom.current().nextLong(100));
 
         LOGGER.debug("Done!");
     }

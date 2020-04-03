@@ -6,3 +6,5 @@ management:
     export:
       wavefront:
         enabled: false
+server:
+  port: 8082
