@@ -1,10 +1,10 @@
 apiVersion: build.pivotal.io/v1alpha1
 kind: Image
 metadata:
-  name: b2b-confirmation
+  name: confirmation-service
   namespace: kpack
 spec:
-  tag: dhubau/b2b-confirmation
+  tag: dhubau/confirmation-service
   serviceAccount: kpack-service-account
   builder:
     name: custom-java-builder
@@ -12,6 +12,6 @@ spec:
   cacheSize: "2Gi"
   source:
     git:
-      url: https://github.com/Turbots/b2b.git
+      url: https://github.com/Turbots/tanzu-demo.git
       revision: master
-    subPath: "b2b-confirmation"
+    subPath: "confirmation-service"

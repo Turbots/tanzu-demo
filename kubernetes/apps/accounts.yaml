@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: b2b-accounts
+  name: account-service
 spec:
   replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: b2b-accounts
+      app: account-service
   template:
     metadata:
       labels:
-        app: b2b-accounts
+        app: account-service
     spec:
       containers:
-        - name: b2b-accounts
-          image: docker.io/dhubau/b2b-accounts:latest
+        - name: account-service
+          image: docker.io/dhubau/account-service:latest
           imagePullPolicy: Always
           env:
             - name: SERVER_PORT
@@ -88,9 +88,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: b2b-accounts
+  name: account-service
   labels:
-    app: b2b-accounts
+    app: account-service
 spec:
   type: LoadBalancer
   ports:
@@ -98,4 +98,4 @@ spec:
       port: 80
       targetPort: 8080
   selector:
-    app: b2b-accounts
+    app: account-service

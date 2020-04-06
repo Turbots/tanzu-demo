@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: b2b-confirmation
+  name: confirmation-service
 spec:
   replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: b2b-confirmation
+      app: confirmation-service
   template:
     metadata:
       labels:
-        app: b2b-confirmation
+        app: confirmation-service
     spec:
       containers:
-        - name: b2b-confirmation
-          image: docker.io/dhubau/b2b-confirmation:latest
+        - name: confirmation-service
+          image: docker.io/dhubau/confirmation-service:latest
           imagePullPolicy: Always
           env:
             - name: NODE_NAME

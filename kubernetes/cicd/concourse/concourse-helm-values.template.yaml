@@ -1,23 +1,23 @@
 concourse:
     web:
-        externalUrl: http://concourse.kiev.cf-app.com
-        bindPort: 80
+        externalUrl: https://concourse.beijing.cf-app.com # CONCOURSE URL
+        bindPort: 443
         localAuth:
-            enabled: true
+            enabled: false
         auth:
             mainTeam:
                 github:
-                    org: mygithuborg
+                    org: pivotal
             github:
                 # Set to true to enable GitHub integration.
                 # You will need to set values for GitHub properties.
                 # You may want to disable local authentication in this case.
-                enabled: false
+                enabled: true
         kubernetes:
             enabled: true
 web:
     service:
         type: LoadBalancer
 secrets:
-    githubClientId: clientIdInGitHubSettings
-    githubClientSecret: clientSecretInGitHubSettings
+    githubClientId: GITHUB_CLIENT_ID
+    githubClientSecret: GITHUB_CLIENT_SECRET

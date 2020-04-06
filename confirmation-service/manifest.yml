@@ -1,7 +1,7 @@
 ---
 applications:
-  - name: b2b-confirmation
-    path: target/b2b-confirmation.jar
+  - name: confirmation-service
+    path: target/confirmation-service.jar
     health-check-type: process
     no-route: true
     buildpacks:
