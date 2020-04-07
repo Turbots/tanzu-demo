@@ -1,23 +1,11 @@
 concourse:
     web:
-        externalUrl: https://concourse.beijing.cf-app.com # CONCOURSE URL
-        bindPort: 443
+        externalUrl: http://concourse.beijing.cf-app.com # CONCOURSE PUBLIC URL - ADD DNS RECORD FOR THIS
+        bindPort: 80
         localAuth:
-            enabled: false
-        auth:
-            mainTeam:
-                github:
-                    org: pivotal
-            github:
-                # Set to true to enable GitHub integration.
-                # You will need to set values for GitHub properties.
-                # You may want to disable local authentication in this case.
-                enabled: true
+            enabled: true
         kubernetes:
             enabled: true
 web:
     service:
         type: LoadBalancer
-secrets:
-    githubClientId: GITHUB_CLIENT_ID
-    githubClientSecret: GITHUB_CLIENT_SECRET
