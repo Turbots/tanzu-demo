@@ -61,20 +61,46 @@ kubectl apply -f 03-dockerhub-creds.yml
 kubectl apply -f 04-custom-java-builder.yml
 ```
 
+### Wavefront
+
+If we want to send metrics and tracing information to Wavefront, we need to setup a simple Wavefront proxy.
+Navigate to the `kubernetes/metrics` and deploy the Wavefront token (containing the API key) and the Wavefront proxy itself.
+
+```bash
+kubectl apply -f wavefront-token.yaml
+kubectl apply -f wavefront-proxy.yaml
+```
+
+This will run 1 replica of the proxy, so depending on the load you expect, you can simply increase the amount of replicas.
+
 ### Concourse
 
-Installing Concourse is, just like the data services, done through a Helm chart.
+Installing Concourse is, just as the data services, done through a Helm chart.
 
 ```bash
 helm install concourse concourse/concourse -f concourse-helm-values.yaml
 ```
 
-Once the pods and services are running, find the public LoadBalancer IP of the Concourse webapp.
-Configure your DNS by adding an A Record linking the Concourse FQDN to that IP.
+Once the pods and services are running, find the public LoadBalancer IP of the Concourse web app.
+Configure your DNS by adding an `A Record` linking the Concourse FQDN to that IP.
 
 Then try to login to Concourse through the Web UI or by using the `fly` CLI:
 
 ```bash
-fly login -t concourse -c http://concourse.beijing.cf-app.com -k -u USERNAME -p USERNAME
+fly login -t concourse -c http://concourse.beijing.cf-app.com -k -u USERNAME -p PASSWORD
 ```
 
+#### Setting up the pipelines
+
+Once you have Concourse up and running, you can add the pipelines for each service:
+
+```bash
+fly -t concourse set-pipeline -p account-service -c pipeline.yml -l k8s.yaml -v kubernetes-deployment=account-service -v kubernetes-container=account-service -v container-image=dhubau/account-service
+fly -t concourse set-pipeline -p confirmation-service -c pipeline.yml -l k8s.yaml -v kubernetes-deployment=confirmation-service -v kubernetes-container=confirmation-service -v container-image=dhubau/confirmation-service
+fly -t concourse set-pipeline -p payment-service -c pipeline.yml -l k8s.yaml -v kubernetes-deployment=payment-service -v kubernetes-container=payment-service -v container-image=dhubau/payment-service
+```
+
+These pipelines will watch the Docker registry for changes in container images.
+When a new container image is found, it will trigger a redeployment of the container under the existing deployment.
+
+Dont' forget to unpause the pipelines, or nothing will happen.

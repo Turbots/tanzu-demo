@@ -1,8 +1,0 @@
-apiVersion: experimental.kpack.pivotal.io/v1alpha1
-kind: Store
-metadata:
-  name: custom-java-store
-  namespace: kpack
-spec:
-  sources:
-  - image: cloudfoundry/cnb:bionic

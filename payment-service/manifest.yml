@@ -1,7 +1,7 @@
 ---
 applications:
-  - name: b2b-payments
-    path: target/b2b-payments.jar
+  - name: payment-service
+    path: target/payment-service.jar
     buildpacks:
       - java_buildpack_offline
     services:

@@ -61,3 +61,18 @@ spec:
               memory: 1024Mi
           ports:
             - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: confirmation-service
+  labels:
+    app: confirmation-service
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector:
+    app: confirmation-service

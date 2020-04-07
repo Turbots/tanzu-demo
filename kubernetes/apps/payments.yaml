@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: b2b-payments
+  name: payment-service
 spec:
   replicas: 1
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: b2b-payments
+      app: payment-service
   template:
     metadata:
       labels:
-        app: b2b-payments
+        app: payment-service
     spec:
       containers:
-        - name: b2b-payments
-          image: docker.io/dhubau/b2b-payments:latest
+        - name: payment-service
+          image: docker.io/dhubau/payment-service:latest
           imagePullPolicy: Always
           env:
             - name: NODE_NAME
@@ -65,9 +65,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: b2b-payments
+  name: payment-service
   labels:
-    app: b2b-payments
+    app: payment-service
 spec:
   type: LoadBalancer
   ports:
@@ -75,4 +75,4 @@ spec:
       port: 80
       targetPort: 8080
   selector:
-    app: b2b-payments
+    app: payment-service

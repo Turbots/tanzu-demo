@@ -50,7 +50,7 @@ spec:
                   name: rabbitmq
                   key: rabbitmq-password
             - name: PAYMENTS_HOST
-              value: b2b-payments
+              value: payment-service
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_ENABLED
               value: 'true'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI

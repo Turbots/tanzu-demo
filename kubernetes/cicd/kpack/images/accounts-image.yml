@@ -1,7 +1,7 @@
 apiVersion: build.pivotal.io/v1alpha1
 kind: Image
 metadata:
-  name: accounts
+  name: account-service
   namespace: kpack
 spec:
   tag: dhubau/account-service
