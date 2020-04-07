@@ -19,14 +19,14 @@ spec:
 apiVersion: experimental.kpack.pivotal.io/v1alpha1
 kind: Stack
 metadata:
-  name: bionic-stack
+  name: cnb-stack
   namespace: kpack
 spec:
-  id: io.buildpacks.stacks.bionic
+  id: org.cloudfoundry.stacks.cflinuxfs3
   buildImage:
-    image: cloudfoundry/build:0.0.9-tiny-cnb
+    image: cloudfoundry/build:0.0.39-full-cnb
   runImage:
-    image: cloudfoundry/run:0.0.19-tiny-cnb
+    image: cloudfoundry/run:0.0.39-full-cnb
 ---
 apiVersion: experimental.kpack.pivotal.io/v1alpha1
 kind: CustomBuilder
