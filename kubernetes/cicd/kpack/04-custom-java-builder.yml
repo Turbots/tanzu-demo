@@ -14,7 +14,7 @@ metadata:
   namespace: kpack
 spec:
   sources:
-  - image: cloudfoundry/cnb:0.0.40-bionic
+  - image: cloudfoundry/cnb:0.0.94-bionic
 ---
 apiVersion: experimental.kpack.pivotal.io/v1alpha1
 kind: Stack
@@ -22,11 +22,11 @@ metadata:
   name: bionic-stack
   namespace: kpack
 spec:
-  id: "io.buildpacks.stacks.bionic"
+  id: io.buildpacks.stacks.bionic
   buildImage:
-    image: "cloudfoundry/build:0.0.1-full-cnb"
+    image: cloudfoundry/build:0.0.9-tiny-cnb
   runImage:
-    image: "cloudfoundry/run:0.0.1-full-cnb"
+    image: cloudfoundry/run:0.0.19-tiny-cnb
 ---
 apiVersion: experimental.kpack.pivotal.io/v1alpha1
 kind: CustomBuilder
