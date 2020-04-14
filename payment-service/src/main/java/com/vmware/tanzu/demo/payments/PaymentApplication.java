@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class PaymentsApplication {
+public class PaymentApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PaymentsApplication.class, args);
+        SpringApplication.run(PaymentApplication.class, args);
     }
 }

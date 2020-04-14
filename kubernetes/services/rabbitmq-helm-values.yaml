@@ -305,7 +305,7 @@ networkPolicy:
   #        - frontend
 
 ## Replica count, set to 3 to provide a default available cluster
-replicas: 3
+replicas: 2
 
 ## Pod priority
 ## https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
@@ -386,15 +386,15 @@ livenessProbe:
   enabled: true
   initialDelaySeconds: 120
   timeoutSeconds: 20
-  periodSeconds: 30
+  periodSeconds: 40
   failureThreshold: 6
   successThreshold: 1
 
 readinessProbe:
   enabled: true
-  initialDelaySeconds: 10
+  initialDelaySeconds: 30
   timeoutSeconds: 20
-  periodSeconds: 30
+  periodSeconds: 40
   failureThreshold: 3
   successThreshold: 1
 
