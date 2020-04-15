@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: account-service
+        redis-client: "true"
     spec:
       containers:
         - name: account-service
