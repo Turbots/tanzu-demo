@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Tanzu Demo</title>
+    <title>VMware Tanzu Demo App</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +19,8 @@
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <link rel="icon" href="https://d1fto35gcfffzn.cloudfront.net/tanzu/tanzu-bug.svg">
 </head>
 <body id="page-top">
 
@@ -32,7 +34,11 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                <a class="navbar-brand" href="#">
+                    <img src="https://d1fto35gcfffzn.cloudfront.net/tanzu/tanzu-bug.svg" width="30" height="30"
+                         class="d-inline-block align-top" alt="VMware Tanzu">
+                    VMware Tanzu
+                </a>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
@@ -74,8 +80,8 @@
                 <p class="mb-4">Depressing Subtitle...</p>-->
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-info">VMware Tanzu <i class="fas fa-heart text-danger"></i> Kubernetes</h1>
-                <p class="mb-4">THIS IS A DEMO FOR ING BELGIUM!</p>
+                <h1 class="h3 mb-2 text-info">Spring Boot <i class="fas fa-heart text-danger"></i> Kubernetes</h1>
+                <p class="mb-4">Spring Boot on Kubernetes connected to Redis and RabbitMQ!</p>
                 <!-- Content Row -->
                 <div class="row">
 
@@ -164,9 +170,39 @@
                     </div>
                 </div>
 
+                <!-- Content Row -->
+                <div class="row">
+
+                    <div class="col-lg-12 mb-4">
+                        <!-- Illustrations -->
+                        <div class="card text-center shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Additional Information</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 45rem;"
+                                         src="img/tanzu-logo.png" alt="Cloudnative Buildpacks">
+                                </div>
+                                <p>This is a demo application that showcases how to run cloud native applications using
+                                    <a target="_blank" rel="nofollow"
+                                       href="https://tanzu.vmware.com/tanzu">VMware Tanzu</a>
+                                    and the power of <a target="_blank" href="https://buildpacks.io" rel="nofollow">Cloud
+                                        Native
+                                        Buildpacks</a>!</p>
+                                <a target="_blank" rel="nofollow" href="https://github.com/Turbots/b2b.git">Check out
+                                    the code on Github &rarr;</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <div th:text="'This application is running on ' + ${ip} + ':' + ${port} + '(' + ${host} + ')'">Server Information</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Bank Accounts</h1>
-                <p class="mb-4">Listing all the accounts and their balances.</p>
+                <h1 class="h3 mb-2 text-gray-800">Banking Information</h1>
+                <p class="mb-4">Listing all the account balances and latest payments.</p>
 
                 <!-- Content Row -->
                 <div class="row">
@@ -181,7 +217,8 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered table-striped" id="accounts" width="100%"
+                                           cellspacing="0">
                                         <thead>
                                         <tr>
                                             <th>Account Number</th>
@@ -208,24 +245,46 @@
                         </div>
                     </div>
 
+                    <!-- Content Column -->
                     <div class="col-lg-6 mb-4">
 
-                        <!-- Illustrations -->
+                        <!-- Project Card Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Additional Information</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Payments</h6>
                             </div>
                             <div class="card-body">
-                                <div class="text-center">
-                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 45rem;"
-                                         src="img/tanzu-logo.png" alt="Cloudnative Buildpacks">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover" id="payments"
+                                           width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>Payments</th>
+                                            <th>Origin</th>
+                                            <th>Destination</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Payments</th>
+                                            <th>Origin</th>
+                                            <th>Destination</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        <th:block th:each="payment : ${payments}">
+                                            <tr>
+                                                <td th:text="${payment.paymentId}">1234</td>
+                                                <td th:text="${payment.originAccount}">1234</td>
+                                                <td th:text="${payment.destinationAccount}">5678</td>
+                                                <td th:text="${payment.amount}">€1.00</td>
+                                            </tr>
+                                        </th:block>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <p>This is a demo application that showcases how to run cloud native applications using <a target="_blank" rel="nofollow"
-                                                       href="https://tanzu.vmware.com/tanzu">VMware Tanzu</a>
-                                    and the power of <a target="_blank" href="https://buildpacks.io" rel="nofollow">Cloud Native
-                                        Buildpacks</a>!</p>
-                                <a target="_blank" rel="nofollow" href="https://github.com/Turbots/b2b.git">Check out
-                                    the code on Github &rarr;</a>
                             </div>
                         </div>
                     </div>

@@ -17,14 +17,11 @@ public class PaymentProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentProcessor.class);
 
     private final AccountRepository accountRepository;
-    private final RestTemplate restTemplate;
+    private final PaymentService paymentService;
 
-    @Value("${payments.host:localhost:8080}")
-    private String paymentsHost;
-
-    public PaymentProcessor(AccountRepository accountRepository, RestTemplate restTemplate) {
+    public PaymentProcessor(AccountRepository accountRepository, PaymentService paymentService) {
         this.accountRepository = accountRepository;
-        this.restTemplate = restTemplate;
+        this.paymentService = paymentService;
     }
 
     @Transactional
@@ -32,7 +29,7 @@ public class PaymentProcessor {
     public void confirmation(PaymentConfirmation confirmation) {
         LOGGER.info("Payment Confirmation [{}]", confirmation.getPaymentId());
 
-        Payment payment = this.restTemplate.getForObject("http://" + paymentsHost + "/{paymentId}", Payment.class, confirmation.getPaymentId());
+        Payment payment = this.paymentService.getPayment(confirmation.getPaymentId());
 
         if (payment != null) {
             LOGGER.info("Processing Payment [{}] with amount [{}]", payment.getPaymentId(), payment.getAmount());

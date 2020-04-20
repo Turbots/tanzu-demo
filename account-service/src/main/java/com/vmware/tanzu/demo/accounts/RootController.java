@@ -3,6 +3,7 @@ package com.vmware.tanzu.demo.accounts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,20 +34,32 @@ public class RootController {
     @Value("${java.runtime.version}")
     private String runtimeVersion;
 
-    public RootController(AccountRepository accountRepository) {
+    private PaymentService paymentService;
+
+    private final Environment environment;
+
+    public RootController(AccountRepository accountRepository, PaymentService paymentService, Environment environment) {
         this.accountRepository = accountRepository;
+        this.paymentService = paymentService;
+        this.environment = environment;
     }
 
     @GetMapping
-    public String index(Model model) {
+    public String index(Model model) throws UnknownHostException {
         Iterable<Account> accounts = this.accountRepository.findTop50ByOrderByBalanceDesc();
+        Payment[] payments = this.paymentService.getPayments();
 
         model.addAttribute("osName", osName);
         model.addAttribute("runtimeName", runtimeName);
         model.addAttribute("runtimeVersion", runtimeVersion);
         model.addAttribute("sslVersion", getOpenSslVersion());
 
+        model.addAttribute("host", InetAddress.getLocalHost().getHostName());
+        model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress());
+        model.addAttribute("port", environment.getProperty("local.server.port"));
+
         model.addAttribute("accounts", accounts);
+        model.addAttribute("payments", payments);
 
         return "index";
     }

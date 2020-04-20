@@ -1,4 +1,5 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-  $('#dataTable').DataTable();
+  $('#accounts').DataTable();
+  $('#payments').DataTable();
 });
