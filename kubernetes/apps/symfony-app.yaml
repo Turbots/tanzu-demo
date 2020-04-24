@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: symfony-demo-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: symfony-demo-app
+  template:
+    metadata:
+      labels:
+        app: symfony-demo-app
+    spec:
+      containers:
+        - name: symfony-app
+          image: docker.io/dhubau/symfony-demo-app:latest
+          imagePullPolicy: Always
+          env:
+            - name: PORT
+              value: "8080"
+            - name: APP_ENV
+              value: "prod"
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 500m
+            limits:
+              memory: 256Mi
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: symfony-demo-app
+  labels:
+    app: symfony-demo-app
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector:
+    app: symfony-demo-app

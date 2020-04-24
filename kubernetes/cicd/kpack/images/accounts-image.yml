@@ -6,6 +6,7 @@ metadata:
 spec:
   tag: dhubau/account-service
   serviceAccount: kpack-service-account
+  successBuildHistoryLimit: 2
   builder:
     name: custom-java-builder
     kind: CustomBuilder

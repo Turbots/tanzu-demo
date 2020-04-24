@@ -1,18 +1,21 @@
 apiVersion: build.pivotal.io/v1alpha1
 kind: Image
 metadata:
-  name: payment-service
+  name: symfony-demo-app
   namespace: kpack
 spec:
-  tag: dhubau/payment-service
+  tag: dhubau/symfony-demo-app
   serviceAccount: kpack-service-account
   successBuildHistoryLimit: 2
   builder:
-    name: custom-java-builder
+    name: symfony-php-builder
     kind: CustomBuilder
   cacheSize: "2Gi"
   source:
     git:
-      url: https://github.com/Turbots/tanzu-demo.git
+      url: https://github.com/Turbots/php-symfony-demo.git
       revision: master
-    subPath: "payment-service"
+  build:
+    env:
+      - name: "APP_ENV"
+        value: "prod"

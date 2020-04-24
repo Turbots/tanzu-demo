@@ -1,0 +1,23 @@
+---
+apiVersion: experimental.kpack.pivotal.io/v1alpha1
+kind: Store
+metadata:
+  name: php-store
+  namespace: kpack
+spec:
+  sources:
+    - image: gcr.io/paketo-buildpacks/builder
+---
+apiVersion: experimental.kpack.pivotal.io/v1alpha1
+kind: CustomBuilder
+metadata:
+  name: symfony-php-builder
+  namespace: kpack
+spec:
+  tag: dhubau/kpack-custom-java-builder
+  serviceAccount: kpack-service-account
+  stack: linux-stack
+  store: php-store
+  order:
+    - group:
+        - id: paketo-buildpacks/php
