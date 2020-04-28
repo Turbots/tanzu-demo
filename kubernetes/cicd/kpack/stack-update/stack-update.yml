@@ -6,6 +6,6 @@ metadata:
 spec:
   id: org.cloudfoundry.stacks.cflinuxfs3
   buildImage:
-    image: cloudfoundry/build:0.0.39-full-cnb
+    image: cloudfoundry/build:full-cnb
   runImage:
-    image: cloudfoundry/run:0.0.39-full-cnb
+    image: cloudfoundry/run:full-cnb
