@@ -21,7 +21,6 @@ public class PaymentMessaging {
 
     @Async
     public void sendPaymentMessage(@NotNull final Payment payment) {
-        LOGGER.info("[Payment] for [{}]", payment.getPaymentId());
         this.paymentChannels.payments().send(new GenericMessage<>(payment));
     }
 }

@@ -40,3 +40,6 @@ spring:
       name: payments
     sender:
       type: web
+tanzu:
+  payment:
+    rate: 2
