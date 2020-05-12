@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-namespace: argocd
 metadata:
+  namespace: argocd
   name: account-service
 spec:
   destination:
