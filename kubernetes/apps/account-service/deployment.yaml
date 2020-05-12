@@ -55,16 +55,12 @@ spec:
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_ENABLED
               value: 'true'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
-              value: 'proxy://wavefront-proxy:2878'
+              value: 'https://surf.wavefront.com'
             - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_API_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: wavefront
                   key: token
-            - name: SPRING_ZIPKIN_ENABLED
-              value: 'true'
-            - name: SPRING_ZIPKIN_BASE_URL
-              value: 'http://wavefront-proxy:9411'
           livenessProbe:
             initialDelaySeconds: 15
             periodSeconds: 3

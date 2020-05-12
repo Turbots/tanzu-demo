@@ -1,7 +1,5 @@
 package com.vmware.tanzu.demo.accounts;
 
-import brave.http.HttpTracing;
-import brave.spring.web.TracingClientHttpRequestInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -18,9 +16,8 @@ public class AccountsApplication {
     }
 
     @Bean
-    RestTemplate restTemplate(HttpTracing tracing) {
+    RestTemplate restTemplate() {
         return new RestTemplateBuilder()
-                .additionalInterceptors(TracingClientHttpRequestInterceptor.create(tracing))
                 .build();
     }
 }

@@ -5,3 +5,4 @@
 /kubernetes/metrics/wavefront-proxy.yaml
 /kubernetes/metrics/wavefront-token.yaml
 /kubernetes/cicd/concourse/concourse-helm-values.yaml
+/kubernetes/cicd/argocd/wavefront-token.yaml
