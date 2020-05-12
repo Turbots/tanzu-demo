@@ -42,13 +42,13 @@ spec:
                   name: redis
                   key: redis-password
             - name: SPRING_RABBITMQ_HOST
-              value: rabbitmq
+              value: rabbit-rabbitmq
             - name: SPRING_RABBITMQ_USERNAME
               value: user
             - name: SPRING_RABBITMQ_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: rabbitmq
+                  name: rabbit-rabbitmq
                   key: rabbitmq-password
             - name: PAYMENTS_HOST
               value: payment-service
@@ -85,18 +85,3 @@ spec:
               memory: 1024Mi
           ports:
             - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: account-service
-  labels:
-    app: account-service
-spec:
-  type: LoadBalancer
-  ports:
-    - name: http
-      port: 80
-      targetPort: 8080
-  selector:
-    app: account-service

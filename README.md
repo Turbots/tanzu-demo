@@ -27,6 +27,7 @@ or whichever namespace you want to run your apps in.
 Install the RabbitMQ cluster through the provided Helm chart. These can be found in [Bitnami's extensive catalog](https://github.com/bitnami/charts/tree/master/bitnami/rabbitmq).
 
 ```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install rabbitmq bitnami/rabbitmq --values kubernetes/services/rabbitmq-helm-values.yaml
 ``` 
 
@@ -43,7 +44,8 @@ Install the Redis cluster through the provided Helm chart.
 These can be found in [Bitnami's extensive catalog](https://github.com/bitnami/charts/tree/master/bitnami/redis).
 Disable the Sentinel feature for now, since Spring Cloud Stream has had issues connecting to it.
 
-```
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm install redis bitnami/redis --values kubernetes/services/redis-helm-values.yaml
 ```
 
@@ -78,6 +80,7 @@ This will run 1 replica of the proxy, so depending on the load you expect, you c
 Installing Concourse is, just as the data services, done through a Helm chart.
 
 ```bash
+helm repo add concourse https://concourse-charts.storage.googleapis.com
 helm install concourse concourse/concourse -f concourse-helm-values.yaml
 ```
 
