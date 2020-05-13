@@ -43,3 +43,6 @@ spring:
 tanzu:
   payment:
     rate: 2
+wavefront:
+  application:
+    name: tanzu-demo

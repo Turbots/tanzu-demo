@@ -24,3 +24,6 @@ spring:
       name: accounts
     sender:
       type: web
+wavefront:
+  application:
+    name: tanzu-demo

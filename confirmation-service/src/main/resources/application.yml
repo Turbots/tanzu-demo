@@ -19,3 +19,6 @@ management:
     export:
       wavefront:
         source: confirmation
+wavefront:
+  application:
+    name: tanzu-demo
