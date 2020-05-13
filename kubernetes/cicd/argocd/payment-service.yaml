@@ -8,8 +8,8 @@ spec:
     namespace: default
     server: 'https://dev.beijing.cf-app.com:8443'
   source:
-    path: kubernetes/apps/payment-service
-    repoURL: 'https://github.com/Turbots/tanzu-demo'
+    path: 'payment-service'
+    repoURL: 'https://github.com/Turbots/tanzu-demo-argocd'
     targetRevision: master
   project: default
   syncPolicy:
