@@ -5,8 +5,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.M3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.0.RC1</version>
+        <relativePath/>
+        <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vmware.tanzu.demo</groupId>
     <artifactId>confirmation-service</artifactId>
@@ -16,7 +17,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
+        <wavefront.version>2.0.0-RC1</wavefront.version>
     </properties>
 
     <dependencies>
@@ -38,27 +40,14 @@
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
         </dependency>
 
-        <!-- Databases for DEV and PROD -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
         <!-- Metrics going to Wavefront -->
         <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-wavefront</artifactId>
+            <groupId>com.wavefront</groupId>
+            <artifactId>wavefront-spring-boot-starter</artifactId>
         </dependency>
-        <!-- Opentracing in Zipkin format -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
         <!-- Developer Tools - will NOT be packaged in the final artifact -->
@@ -111,6 +100,13 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.wavefront</groupId>
+                <artifactId>wavefront-spring-boot-bom</artifactId>
+                <version>${wavefront.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

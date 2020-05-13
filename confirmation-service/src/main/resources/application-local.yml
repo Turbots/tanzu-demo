@@ -1,10 +1,2 @@
-spring:
-  zipkin:
-    enabled: false
-management:
-  metrics:
-    export:
-      wavefront:
-        enabled: false
 server:
   port: 8082
