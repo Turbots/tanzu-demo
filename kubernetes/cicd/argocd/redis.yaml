@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: default
-    server: 'https://kubernetes.default.svc'
+    server: 'https://dev.beijing.cf-app.com:8443'
   source:
     repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 10.6.13
