@@ -11,6 +11,10 @@ spec:
     repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 6.25.9
     chart: rabbitmq
+    helm:
+      parameters:
+      - name: replicas
+        value: "2"
   project: default
   syncPolicy:
     automated:
