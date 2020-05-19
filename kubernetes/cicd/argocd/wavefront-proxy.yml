@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: wavefront-proxy
+spec:
+  destination:
+    server: 'DEV_CLUSTER_URL'
+    namespace: WORKLOAD_NAMESPACE
+  source:
+    repoURL: 'https://github.com/Turbots/tanzu-demo-gitops'
+    targetRevision: master
+    path: 'wavefront-proxy'
+  project: default
+  syncPolicy:
+    automated:
+      automated:
+        prune: false
+        selfHeal: false
+      prune: true
+      selfHeal: true

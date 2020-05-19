@@ -18,12 +18,6 @@ spring:
       bindings:
         confirmations:
           group: accounts
-  zipkin:
-    discovery-client-enabled: false
-    service:
-      name: accounts
-    sender:
-      type: web
 wavefront:
   application:
     name: tanzu-demo

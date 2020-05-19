@@ -8,12 +8,6 @@ spring:
           group: 'confirmation'
           consumer:
             prefetch: 100
-  zipkin:
-    discovery-client-enabled: false
-    service:
-      name: confirmation
-    sender:
-      type: web
 management:
   metrics:
     export:

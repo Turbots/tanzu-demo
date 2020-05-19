@@ -11,12 +11,13 @@ Both Kubernetes clusters are managed using [Mission Control](https://tanzu.vmwar
 
 ## Use Case - Banking Application
 
+### Application Architecture
+
+### Deployment Diagram
+
+### Continuous Delivery Diagram
+
 ## Installation
 
 Follow the instructions in the `setup.sh` script.
 
-# Application Architecture
-
-# Deployment Diagram
-
-# Continuous Delivery Diagram

@@ -18,7 +18,11 @@ spec:
       - name: service.type
         value: "LoadBalancer"
       - name: rabbitmq.existingPasswordSecret
-        value: rabbitmq
+        value: rabbit
+      - name: rabbitmq.existingErlangSecret
+        value: rabbit
+      - name: forceBoot.enabled
+        value: true
   project: default
   syncPolicy:
     automated:

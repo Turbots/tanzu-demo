@@ -8,9 +8,9 @@ spec:
     server: 'DEV_CLUSTER_URL'
     namespace: WORKLOAD_NAMESPACE
   source:
-    path: 'account-service'
     repoURL: 'https://github.com/Turbots/tanzu-demo-gitops'
     targetRevision: master
+    path: 'account-service'
   project: default
   syncPolicy:
     automated:
