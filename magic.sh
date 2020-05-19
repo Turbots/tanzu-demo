@@ -58,6 +58,37 @@ function usage() {
   echo -e ""
 }
 
+function load_config() {
+  if [[ ! -f config.yml ]] ; then
+    echo "Could not find config.yml file. Copy the config.template.yml file and fill in the values."
+    exit 1
+  fi
+
+  CICD_CLUSTER=`load_config_value ".cicd.kubectx"`
+  DEV_CLUSTER=`load_config_value ".dev.kubectx"`
+  DEV_CLUSTER_URL=`load_config_value ".dev.url"`
+  DEV_NAMESPACE=`load_config_value ".dev.namespace"`
+  RABBITMQ_PASSWORD=`load_config_value ".dev.rabbit.password"`
+  REDIS_PASSWORD=`load_config_value ".dev.redis.password"`
+  WAVEFRONT_TOKEN=`load_config_value ".dev.wavefront.token"`
+  GITHUB_USERNAME=`load_config_value ".dev.github.username"`
+  GITHUB_PASSWORD=`load_config_value ".dev.github.password"`
+  DOCKERHUB_USERNAME=`load_config_value ".dev.dockerhub.username"`
+  DOCKERHUB_PASSWORD=`load_config_value ".dev.dockerhub.password"`
+}
+
+function load_config_value() {
+  local VALUE=`cat config.yml | yq r - -j | jq $1 -j`
+
+  if [[ -z "$VALUE" ]]
+  then
+    echo "$1 is empty!"
+    exit 1
+  fi
+
+  echo ${VALUE}
+}
+
 ##
 # wait for user to press ENTER
 # if $PROMPT_TIMEOUT > 0 this will be used as the max time for proceeding automatically

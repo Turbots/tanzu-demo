@@ -1,0 +1,18 @@
+cicd:
+  kubectx: # Kubernetes Context name
+dev:
+  kubectx: # Kubernetes Context name
+  url: # Kubernetes Master API URL
+  namespace: default
+  rabbit:
+    password: # RabbitMQ password
+  redis:
+    password: # Redis password
+  wavefront:
+    token: # Wavefront API token
+  dockerhub:
+    username: # Dockerhub username
+    password: # Dockerhub password token
+  github:
+    username: # Github username
+    password: # Github password or authentication token

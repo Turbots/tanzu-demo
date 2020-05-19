@@ -14,15 +14,15 @@ spec:
     helm:
       parameters:
       - name: replicas
-        value: "2"
+        value: '2'
       - name: service.type
-        value: "LoadBalancer"
+        value: 'LoadBalancer'
       - name: rabbitmq.existingPasswordSecret
-        value: rabbit
+        value: 'rabbit'
       - name: rabbitmq.existingErlangSecret
-        value: rabbit
+        value: 'rabbit'
       - name: forceBoot.enabled
-        value: true
+        value: 'true'
   project: default
   syncPolicy:
     automated:

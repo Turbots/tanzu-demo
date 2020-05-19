@@ -11,13 +11,21 @@ Both Kubernetes clusters are managed using [Mission Control](https://tanzu.vmwar
 
 ## Use Case - Banking Application
 
-### Application Architecture
+#### Application Architecture
 
-### Deployment Diagram
+#### Deployment Diagram
 
-### Continuous Delivery Diagram
+#### Continuous Delivery Diagram
 
 ## Installation
 
-Follow the instructions in the `setup.sh` script.
+First copy the `config.template.yml` to config.yml and fill in the values.
 
+Then follow the instructions in the `setup_all.sh` script to install everything from scratch.
+
+Alternatively, install the different components by running the various setup scripts.
+
+- Install kpack using `01-install-kpack.sh`.
+- Install argocd using `02-install-argocd.sh`.
+- Configure the credentials for the various services in `03-configure-credentials.sh`.
+- Configure the GitOps resources using `03-configure-gitops.sh`.
