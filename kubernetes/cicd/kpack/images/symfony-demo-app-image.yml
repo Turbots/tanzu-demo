@@ -8,7 +8,7 @@ spec:
   serviceAccount: kpack-service-account
   successBuildHistoryLimit: 2
   builder:
-    name: symfony-php-builder
+    name: php-builder
     kind: CustomBuilder
   cacheSize: "2Gi"
   source:

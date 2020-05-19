@@ -8,8 +8,8 @@ spec:
   serviceAccount: kpack-service-account
   successBuildHistoryLimit: 2
   builder:
-    name: custom-java-builder
-    kind: CustomBuilder
+    name: default-builder
+    kind: Builder
   cacheSize: "2Gi"
   source:
     git:

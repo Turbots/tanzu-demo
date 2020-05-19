@@ -2,19 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: rabbit
+  name: confirmation-service
 spec:
   destination:
-    namespace: default
-    server: 'https://dev.beijing.cf-app.com:8443'
+    server: 'DEV_CLUSTER_URL'
+    namespace: WORKLOAD_NAMESPACE
   source:
-    repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 6.25.9
-    chart: rabbitmq
-    helm:
-      parameters:
-      - name: replicas
-        value: "2"
+    path: 'confirmation-service'
+    repoURL: 'https://github.com/Turbots/tanzu-demo-gitops'
+    targetRevision: master
   project: default
   syncPolicy:
     automated:

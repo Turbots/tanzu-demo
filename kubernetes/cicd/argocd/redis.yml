@@ -2,15 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: account-service
+  name: redis
 spec:
   destination:
-    namespace: default
-    server: 'https://dev.beijing.cf-app.com:8443'
+    server: 'DEV_CLUSTER_URL'
+    namespace: WORKLOAD_NAMESPACE
   source:
-    path: 'account-service'
-    repoURL: 'https://github.com/Turbots/tanzu-demo-argocd'
-    targetRevision: master
+    repoURL: 'https://charts.bitnami.com/bitnami'
+    targetRevision: 10.6.13
+    chart: redis
   project: default
   syncPolicy:
     automated:

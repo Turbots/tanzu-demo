@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  token: WAVEFRONT_TOKEN
+kind: Secret
+type: Opaque
+metadata:
+  name: wavefront

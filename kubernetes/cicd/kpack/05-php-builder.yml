@@ -6,15 +6,15 @@ metadata:
   namespace: kpack
 spec:
   sources:
-    - image: gcr.io/paketo-buildpacks/builder
+    - image: gcr.io/paketo-buildpacks/builder:full-cf
 ---
 apiVersion: experimental.kpack.pivotal.io/v1alpha1
 kind: CustomBuilder
 metadata:
-  name: symfony-php-builder
+  name: php-builder
   namespace: kpack
 spec:
-  tag: dhubau/kpack-custom-java-builder
+  tag: dhubau/kpack-php-builder
   serviceAccount: kpack-service-account
   stack: linux-stack
   store: php-store

@@ -1,18 +1,18 @@
 apiVersion: build.pivotal.io/v1alpha1
 kind: Image
 metadata:
-  name: account-service
+  name: payment-service
   namespace: kpack
 spec:
-  tag: dhubau/account-service
+  tag: dhubau/payment-service
   serviceAccount: kpack-service-account
   successBuildHistoryLimit: 2
   builder:
-    name: custom-java-builder
-    kind: CustomBuilder
+    name: default-builder
+    kind: Builder
   cacheSize: "2Gi"
   source:
     git:
       url: https://github.com/Turbots/tanzu-demo.git
       revision: master
-    subPath: "account-service"
+    subPath: "payment-service"
