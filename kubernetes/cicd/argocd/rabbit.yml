@@ -2,10 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: rabbit
+  name: rabbit-ENVIRONMENT
 spec:
   destination:
-    server: 'DEV_CLUSTER_URL'
+    server: 'CLUSTER_URL'
     namespace: WORKLOAD_NAMESPACE
   source:
     repoURL: 'https://charts.bitnami.com/bitnami'
@@ -23,7 +23,7 @@ spec:
         value: 'rabbit'
       - name: forceBoot.enabled
         value: 'true'
-  project: default
+  project: ENVIRONMENT
   syncPolicy:
     automated:
       automated:

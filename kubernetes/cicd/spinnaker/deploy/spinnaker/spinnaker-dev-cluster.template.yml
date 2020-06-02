@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dev-cluster
+type: Opaque
+stringData:
+  kubeconfig: |-
+    <INSERT_KUBECONFIG_HERE>

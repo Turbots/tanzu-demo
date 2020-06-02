@@ -1,0 +1,13 @@
+apiVersion: spinnaker.io/v1alpha2
+kind: SpinnakerAccount
+metadata:
+  name: dev
+spec:
+  type: Kubernetes
+  enabled: true
+  permissions: {} # List of permissions - see below
+  settings: {} # Settings see below
+  kubernetes:
+    kubeconfigSecret:
+      name: dev-cluster
+      key: kubeconfig

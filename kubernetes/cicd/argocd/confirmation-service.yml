@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: confirmation-service
+  name: confirmation-service-ENVIRONMENT
 spec:
   destination:
-    server: 'DEV_CLUSTER_URL'
+    server: 'CLUSTER_URL'
     namespace: WORKLOAD_NAMESPACE
   source:
     repoURL: 'https://github.com/Turbots/tanzu-demo-gitops'
     targetRevision: master
-    path: 'confirmation-service'
-  project: default
+    path: 'ENVIRONMENT/confirmation-service'
+  project: ENVIRONMENT
   syncPolicy:
     automated:
       automated:

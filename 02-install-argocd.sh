@@ -44,6 +44,11 @@ echo 'Continue to add the DEV_CLUSTER to the ArgoCD cluster configuration...'
 pe "kubectx ${DEV_CLUSTER}"
 pe "./argocd cluster add `kubectx -c`"
 
+echo ''
+echo 'Continue to add the PROD_CLUSTER to the ArgoCD cluster configuration...'
+pe "kubectx ${PROD_CLUSTER}"
+pe "./argocd cluster add `kubectx -c`"
+
 echo '----------------------------------------------'
 echo '      ArgoCD configured successfully!'
 echo '----------------------------------------------'

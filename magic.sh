@@ -65,16 +65,26 @@ function load_config() {
   fi
 
   CICD_CLUSTER=`load_config_value ".cicd.kubectx"`
+  GITHUB_USERNAME=`load_config_value ".cicd.github.username"`
+  GITHUB_PASSWORD=`load_config_value ".cicd.github.password"`
+  DOCKERHUB_USERNAME=`load_config_value ".cicd.dockerhub.username"`
+  DOCKERHUB_PASSWORD=`load_config_value ".cicd.dockerhub.password"`
+  AWS_ACCESS_KEY_ID=`load_config_value ".cicd.spinnaker.s3accesskey.id"`
+  AWS_ACCESS_KEY_SECRET=`load_config_value ".cicd.spinnaker.s3accesskey.secret"`
+
   DEV_CLUSTER=`load_config_value ".dev.kubectx"`
   DEV_CLUSTER_URL=`load_config_value ".dev.url"`
   DEV_NAMESPACE=`load_config_value ".dev.namespace"`
-  RABBITMQ_PASSWORD=`load_config_value ".dev.rabbit.password"`
-  REDIS_PASSWORD=`load_config_value ".dev.redis.password"`
-  WAVEFRONT_TOKEN=`load_config_value ".dev.wavefront.token"`
-  GITHUB_USERNAME=`load_config_value ".dev.github.username"`
-  GITHUB_PASSWORD=`load_config_value ".dev.github.password"`
-  DOCKERHUB_USERNAME=`load_config_value ".dev.dockerhub.username"`
-  DOCKERHUB_PASSWORD=`load_config_value ".dev.dockerhub.password"`
+  DEV_RABBITMQ_PASSWORD=`load_config_value ".dev.rabbit.password"`
+  DEV_REDIS_PASSWORD=`load_config_value ".dev.redis.password"`
+  DEV_WAVEFRONT_TOKEN=`load_config_value ".dev.wavefront.token"`
+
+  PROD_CLUSTER=`load_config_value ".prod.kubectx"`
+  PROD_CLUSTER_URL=`load_config_value ".prod.url"`
+  PROD_NAMESPACE=`load_config_value ".prod.namespace"`
+  PROD_RABBITMQ_PASSWORD=`load_config_value ".prod.rabbit.password"`
+  PROD_REDIS_PASSWORD=`load_config_value ".prod.redis.password"`
+  PROD_WAVEFRONT_TOKEN=`load_config_value ".prod.wavefront.token"`
 }
 
 function load_config_value() {

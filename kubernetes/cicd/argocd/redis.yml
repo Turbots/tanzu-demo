@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: redis
+  name: redis-ENVIRONMENT
 spec:
   destination:
-    server: 'DEV_CLUSTER_URL'
+    server: 'CLUSTER_URL'
     namespace: WORKLOAD_NAMESPACE
   source:
     repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 10.6.13
     chart: redis
-  project: default
+  project: ENVIRONMENT
   syncPolicy:
     automated:
       automated:

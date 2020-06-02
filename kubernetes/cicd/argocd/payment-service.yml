@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   namespace: argocd
-  name: payment-service
+  name: payment-service-ENVIRONMENT
 spec:
   destination:
-    server: 'DEV_CLUSTER_URL'
+    server: 'CLUSTER_URL'
     namespace: WORKLOAD_NAMESPACE
   source:
     repoURL: 'https://github.com/Turbots/tanzu-demo-gitops'
     targetRevision: master
-    path: 'payment-service'
-  project: default
+    path: 'ENVIRONMENT/payment-service'
+  project: ENVIRONMENT
   syncPolicy:
     automated:
       automated:

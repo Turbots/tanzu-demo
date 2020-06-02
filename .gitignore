@@ -4,3 +4,4 @@
 /kubernetes/cicd/kpack/03-dockerhub-creds.yml
 /argocd
 /config.yml
+/manifests.tgz
