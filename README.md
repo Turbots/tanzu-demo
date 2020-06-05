@@ -1,4 +1,8 @@
-![Java CI](https://github.com/Turbots/tanzu-demo/workflows/Java%20CI/badge.svg)
+![Account Service CI](https://github.com/Turbots/tanzu-demo/workflows/Account%20Service%20CI/badge.svg)
+
+![Confirmation Service CI](https://github.com/Turbots/tanzu-demo/workflows/Confirmation%20Service%20CI/badge.svg)
+
+![Payment Service CI](https://github.com/Turbots/tanzu-demo/workflows/Payment%20Service%20CI/badge.svg)
 
 ![Tanzu](tanzu-logo.png)
 
