@@ -31,9 +31,13 @@ echo ''
 echo 'Continue to store the ArgoCD IP address...'
 pe "ARGOCD_IP=`kubectl -n argocd get svc/argocd-server -o json | jq '.status.loadBalancer.ingress[0].ip' -j`"
 
-echo ''
-echo 'Continue to install the correct ArgoCD binary locally'
-pe "wget --no-check-certificate https://${ARGOCD_IP}/download/argocd-darwin-amd64 -O argocd && chmod +x argocd"
+if [[ ! -f argocd ]]; then
+  echo ''
+  echo 'Continue to install the correct ArgoCD binary locally'
+  pe "wget --no-check-certificate https://${ARGOCD_IP}/download/argocd-darwin-amd64 -O argocd && chmod +x argocd"
+else
+  continue
+fi
 
 echo ''
 echo 'Continue to login to ArgoCD using "argocd login $ARGOCD_IP --name argocd --username $ARGOCD_USERNAME --password $ARGOCD_PASSWORD --insecure"'
