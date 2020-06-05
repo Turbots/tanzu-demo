@@ -1,4 +1,4 @@
-name: Java CI
+name: Confirmation Service CI
 
 on:
   push:

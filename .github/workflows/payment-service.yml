@@ -1,4 +1,4 @@
-name: Java CI
+name: Payment Service CI
 
 on:
   push:

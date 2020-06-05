@@ -1,3 +1,5 @@
+![Java CI](https://github.com/Turbots/tanzu-demo/workflows/Java%20CI/badge.svg)
+
 ![Tanzu](tanzu-logo.png)
 
 # VMware Tanzu Demo
