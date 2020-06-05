@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - '.github/workflows/account-service.yml'
-      - 'account-service/**'
+      - '.github/workflows/confirmation-service.yml'
+      - 'confirmation-service/**'
 
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
           java-version: '>11.0.0'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-        working-directory: ./account-service
+        working-directory: ./confirmation-service
