@@ -30,8 +30,7 @@ jobs:
         working-directory: ./account-service
       - name: Release Artifact
         uses: skx/github-action-publish-binaries@master
-        working-directory: ./account-service
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: 'target/account-service.jar'
+          args: 'account-service/target/account-service.jar'
