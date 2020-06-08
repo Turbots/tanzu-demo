@@ -28,10 +28,13 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
         working-directory: ./account-service
+      - name: Bump version and push tag
+        uses: mathieudutour/github-tag-action@v4.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: account-service/target/account-service.jar
-          tag_name: account-service-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
