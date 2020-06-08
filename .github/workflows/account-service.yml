@@ -36,5 +36,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: account-service/target/account-service.jar
+          tag_name: ${{ new_tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
