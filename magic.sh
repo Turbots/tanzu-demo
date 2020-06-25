@@ -75,6 +75,7 @@ function load_config() {
   DEV_CLUSTER=`load_config_value ".dev.kubectx"`
   DEV_CLUSTER_URL=`load_config_value ".dev.url"`
   DEV_NAMESPACE=`load_config_value ".dev.namespace"`
+  DEV_DATA_NAMESPACE=`load_config_value ".dev.data_namespace"`
   DEV_RABBITMQ_PASSWORD=`load_config_value ".dev.rabbit.password"`
   DEV_REDIS_PASSWORD=`load_config_value ".dev.redis.password"`
   DEV_WAVEFRONT_TOKEN=`load_config_value ".dev.wavefront.token"`
@@ -82,6 +83,7 @@ function load_config() {
   PROD_CLUSTER=`load_config_value ".prod.kubectx"`
   PROD_CLUSTER_URL=`load_config_value ".prod.url"`
   PROD_NAMESPACE=`load_config_value ".prod.namespace"`
+  PROD_DATA_NAMESPACE=`load_config_value ".prod.data_namespace"`
   PROD_RABBITMQ_PASSWORD=`load_config_value ".prod.rabbit.password"`
   PROD_REDIS_PASSWORD=`load_config_value ".prod.redis.password"`
   PROD_WAVEFRONT_TOKEN=`load_config_value ".prod.wavefront.token"`

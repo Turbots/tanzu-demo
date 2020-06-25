@@ -36,7 +36,7 @@ if [[ ! -f argocd ]]; then
   echo 'Continue to install the correct ArgoCD binary locally'
   pe "wget --no-check-certificate https://${ARGOCD_IP}/download/argocd-darwin-amd64 -O argocd && chmod +x argocd"
 else
-  continue
+  echo 'ArgoCD already present locally... Skipping download'
 fi
 
 echo ''
@@ -52,6 +52,7 @@ pe "./argocd proj add-source development https://github.com/Turbots/tanzu-demo"
 pe "./argocd proj add-source development https://github.com/Turbots/tanzu-demo-gitops"
 pe "./argocd proj add-source development https://charts.bitnami.com/bitnami"
 pe "./argocd proj add-destination development ${DEV_CLUSTER_URL} ${DEV_NAMESPACE}"
+pe "./argocd proj add-destination development ${DEV_CLUSTER_URL} ${DEV_DATA_NAMESPACE}"
 
 echo ''
 echo 'Continue to add the PROD_CLUSTER to the ArgoCD cluster configuration...'
@@ -62,6 +63,7 @@ pe "./argocd proj add-source production https://github.com/Turbots/tanzu-demo"
 pe "./argocd proj add-source production https://github.com/Turbots/tanzu-demo-gitops"
 pe "./argocd proj add-source production https://charts.bitnami.com/bitnami"
 pe "./argocd proj add-destination production ${PROD_CLUSTER_URL} ${PROD_NAMESPACE}"
+pe "./argocd proj add-destination production ${PROD_CLUSTER_URL} ${PROD_DATA_NAMESPACE}"
 
 echo '----------------------------------------------'
 echo '      ArgoCD configured successfully!'
