@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service
+spec:
+  type: ExternalName
+  externalName: rabbit-production-rabbitmq.data.svc.cluster.local
+  selector:
+    app: rabbitmq
+    release: rabbit-production

@@ -11,6 +11,12 @@ spec:
     repoURL: 'https://charts.bitnami.com/bitnami'
     targetRevision: 10.6.13
     chart: redis
+    helm:
+      parameters:
+      - name: existingSecret
+        value: 'redis'
+      - name: existingSecretPasswordKey
+        value: 'redis-password'
   project: ENVIRONMENT
   syncPolicy:
     automated:
