@@ -19,9 +19,15 @@ Both Kubernetes clusters are managed using [Mission Control](https://tanzu.vmwar
 
 #### Application Architecture
 
+![Tanzu](app-architecture.png)
+
 #### Deployment Diagram
 
+![Tanzu](deployment-diagram.png)
+
 #### Continuous Delivery Diagram
+
+![Tanzu](dev-workflow.png)
 
 ## Installation
 
