@@ -1,6 +1,6 @@
 package com.vmware.tanzu.demo.payments;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Payment {

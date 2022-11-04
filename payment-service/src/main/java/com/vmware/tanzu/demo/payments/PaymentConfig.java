@@ -5,7 +5,6 @@ import io.micrometer.core.instrument.MeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
-import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
@@ -18,7 +17,6 @@ import java.util.concurrent.Executor;
 @Configuration
 @EnableAsync
 @EnableScheduling
-@EnableBinding(PaymentChannels.class)
 public class PaymentConfig implements AsyncConfigurer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentConfig.class);

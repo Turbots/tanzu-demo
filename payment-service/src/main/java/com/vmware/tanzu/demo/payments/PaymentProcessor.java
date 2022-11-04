@@ -1,11 +1,11 @@
 package com.vmware.tanzu.demo.payments;
 
+import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.NotNull;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -35,7 +35,7 @@ public class PaymentProcessor {
     }
 
     private void transact(final Payment payment) throws InterruptedException {
-        LOGGER.debug("Performing transaction...");
+        LOGGER.debug("Transacting payment {}", payment.getPaymentId());
 
         Thread.sleep(ThreadLocalRandom.current().nextLong(100));
 

@@ -4,18 +4,15 @@ import io.micrometer.core.instrument.Counter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Component
-@RefreshScope
 public class PaymentProcessingScheduler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentProcessingScheduler.class);
@@ -34,7 +31,7 @@ public class PaymentProcessingScheduler {
     }
 
     @Scheduled(initialDelay = TEN_SECONDS, fixedRate = TEN_SECONDS)
-    public void processPayments() throws IOException, InterruptedException {
+    public void processPayments() throws InterruptedException {
         LOGGER.info("Processing Payments...");
         ThreadLocalRandom random = ThreadLocalRandom.current();
 
