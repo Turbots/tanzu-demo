@@ -1,0 +1,77 @@
+apiVersion: sql.tanzu.vmware.com/v1
+kind: Postgres
+metadata:
+  name: tanzu-demo-database
+  namespace: team-tanzu
+spec:
+  pgConfig:
+    username: pgadmin
+    appUser: pgappuser
+  postgresVersion:
+    name: postgres-14 # View available versions with `kubectl get postgresversion`
+  serviceType: ClusterIP
+  seccompProfile:
+    type: RuntimeDefault
+  imagePullSecret:
+    name: registry-credentials
+  persistentVolumeClaimPolicy: delete
+  storageSize: 1Gi
+  dataPodConfig:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - data
+                      - monitor
+                  - key: postgres-instance
+                    operator: In
+                    values:
+                      - tanzu-demo-database
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+  monitorStorageSize: 1G
+  monitorPodConfig:
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: type
+                    operator: In
+                    values:
+                      - data
+                      - monitor
+                  - key: postgres-instance
+                    operator: In
+                    values:
+                      - tanzu-demo-database
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+  resources:
+    data:
+      limits:
+        cpu: 800m
+        memory: 800Mi
+      requests:
+        cpu: 800m
+        memory: 800Mi
+    monitor:
+      limits:
+        cpu: 800m
+        memory: 800Mi
+      requests:
+        cpu: 800m
+        memory: 800Mi
+    metrics:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi

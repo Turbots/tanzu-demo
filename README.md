@@ -10,10 +10,7 @@
 
 Demo material for developers on [VMware Tanzu](https://tanzu.vmware.com/).
 
-Consists of three [Spring Boot](https://spring.io) microservices, communicating over [RabbitMQ](), backed by a Redis key value store, all running on Kubernetes.
-When source code changes, the applications are rebuilt using [Build Service](https://tanzu.vmware.com/build-service) and redeployed to [Enterprise PKS](https://cloud.vmware.com/vmware-enterprise-pks) using ArgoCD GitOps.
-
-Both Kubernetes clusters are managed using [Mission Control](https://tanzu.vmware.com/mission-control) and both infrastructure, Kubernetes, applications and services are monitored using [Observability by Wavefront](https://tanzu.vmware.com/observability).
+Consists of three [Spring Boot](https://spring.io) microservices, communicating over [RabbitMQ](), backed by a Postgres database, all running on Kubernetes.
 
 ## Use Case - Banking Application
 
@@ -31,13 +28,4 @@ Both Kubernetes clusters are managed using [Mission Control](https://tanzu.vmwar
 
 ## Installation
 
-First copy the `config.template.yml` to config.yml and fill in the values.
-
-Then follow the instructions in the `setup_all.sh` script to install everything from scratch.
-
-Alternatively, install the different components by running the various setup scripts.
-
-- Install kpack using `01-install-kpack.sh`.
-- Install argocd using `02-install-argocd.sh`.
-- Configure the credentials for the various services in `03-configure-credentials.sh`.
-- Configure the GitOps resources using `03-configure-gitops.sh`.
+TODO
