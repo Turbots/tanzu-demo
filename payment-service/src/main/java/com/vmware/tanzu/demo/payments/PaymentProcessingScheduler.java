@@ -22,11 +22,11 @@ public class PaymentProcessingScheduler {
     @Value("${tanzu.payment.rate:1}")
     private long paymentRate; // number of payments every 10 seconds
 
-    private final PaymentProcessor paymentProcessor;
+    private final PaymentService paymentService;
     private final Counter processedCounter;
 
-    public PaymentProcessingScheduler(PaymentProcessor paymentProcessor, Counter processedCounter) {
-        this.paymentProcessor = paymentProcessor;
+    public PaymentProcessingScheduler(PaymentService paymentService, Counter processedCounter) {
+        this.paymentService = paymentService;
         this.processedCounter = processedCounter;
     }
 
@@ -43,7 +43,7 @@ public class PaymentProcessingScheduler {
 
             Payment payment = new Payment(null, paymentId, originAccount, destinationAccount, amount, PaymentStatus.NOT_CONFIRMED);
 
-            this.paymentProcessor.process(payment);
+            this.paymentService.process(payment);
             this.processedCounter.increment();
         }
 

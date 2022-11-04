@@ -5,8 +5,7 @@ spring:
     stream:
       bindings:
         confirm-in-0:
-          group: 'payments'
-          consumer:
-            prefetch: 100
+          destination: 'payments'
+          group: 'payment-processor'
         confirm-out-0:
           destination: 'confirmations'

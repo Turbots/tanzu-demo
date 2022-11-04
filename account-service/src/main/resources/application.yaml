@@ -9,8 +9,11 @@ management:
 spring:
   application:
     name: accounts
+  jpa:
+    open-in-view: false
   cloud:
     stream:
       bindings:
         confirmation-in-0:
-          group: accounts
+          destination: 'confirmations'
+          group: 'account-processor'

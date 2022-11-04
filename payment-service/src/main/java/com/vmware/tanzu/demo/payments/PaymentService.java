@@ -9,14 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
-public class PaymentProcessor {
+public class PaymentService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentProcessor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PaymentService.class);
 
     private final PaymentRepository paymentRepository;
     private final PaymentMessaging paymentMessaging;
 
-    public PaymentProcessor(PaymentRepository paymentRepository, PaymentMessaging paymentMessaging) {
+    public PaymentService(PaymentRepository paymentRepository, PaymentMessaging paymentMessaging) {
         this.paymentRepository = paymentRepository;
         this.paymentMessaging = paymentMessaging;
     }
@@ -28,14 +28,18 @@ public class PaymentProcessor {
         this.paymentRepository.save(payment);
         LOGGER.debug("Payment stored in database as [{}]", PaymentStatus.NOT_CONFIRMED);
 
-        this.transact(payment);
-        LOGGER.debug("Payment transacted");
-
+        this.registerWithMainframe(payment);
         this.paymentMessaging.sendPaymentMessage(payment);
     }
 
-    private void transact(final Payment payment) throws InterruptedException {
-        LOGGER.debug("Transacting payment {}", payment.getPaymentId());
+    @Transactional
+    public void confirmPayment(String paymentId) {
+        LOGGER.debug("Confirming payment {} in database", paymentId);
+        this.paymentRepository.confirmPayment(paymentId, PaymentStatus.CONFIRMED);
+    }
+
+    private void registerWithMainframe(final Payment payment) throws InterruptedException {
+        LOGGER.debug("Registering payment {} in mainframe", payment.getPaymentId());
 
         Thread.sleep(ThreadLocalRandom.current().nextLong(100));
 

@@ -1,12 +1,15 @@
 package com.vmware.tanzu.demo.accounts;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 
-@RedisHash("accounts")
+@Entity
 public class Account {
+
+    public Account() {
+    }
 
     public Account(String number, BigDecimal balance) {
         this.number = number;
