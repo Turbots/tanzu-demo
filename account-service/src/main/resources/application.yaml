@@ -6,18 +6,11 @@ management:
   endpoint:
     health:
       show-details: always
-  metrics:
-    export:
-      wavefront:
-        source: accounts
 spring:
   application:
     name: accounts
   cloud:
     stream:
       bindings:
-        confirmations:
+        confirmation-in-0:
           group: accounts
-wavefront:
-  application:
-    name: tanzu-demo

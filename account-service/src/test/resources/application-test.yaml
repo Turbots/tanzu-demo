@@ -1,8 +1,0 @@
-management:
-  metrics:
-    export:
-      wavefront:
-        enabled: false
-wavefront:
-  tracing:
-    enabled: false

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0-M3</version>
+        <version>3.0.0-RC1</version>
         <relativePath/>
         <!-- lookup parent from repository -->
     </parent>
@@ -17,8 +17,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-cloud.version>2021.0.4</spring-cloud.version>
-        <wavefront.version>2.3.0</wavefront.version>
+        <spring-cloud.version>2022.0.0-M5</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -50,21 +49,18 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
         </dependency>
-        <!-- Metrics going to Wavefront -->
-        <dependency>
-            <groupId>com.wavefront</groupId>
-            <artifactId>wavefront-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <!-- Test Dependencies - will NOT be packaged in the final artifact -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.amqp</groupId>
@@ -73,19 +69,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-test-support</artifactId>
+            <artifactId>spring-cloud-stream</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
+            <classifier>test-binder</classifier>
+            <type>test-jar</type>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -94,13 +81,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.wavefront</groupId>
-                <artifactId>wavefront-spring-boot-bom</artifactId>
-                <version>${wavefront.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
