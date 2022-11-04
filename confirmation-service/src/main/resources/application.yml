@@ -4,15 +4,9 @@ spring:
   cloud:
     stream:
       bindings:
-        payments:
-          group: 'confirmation'
+        confirm-in-0:
+          group: 'payments'
           consumer:
             prefetch: 100
-management:
-  metrics:
-    export:
-      wavefront:
-        source: confirmation
-wavefront:
-  application:
-    name: tanzu-demo
+        confirm-out-0:
+          destination: 'confirmations'
