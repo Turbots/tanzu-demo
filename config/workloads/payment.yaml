@@ -38,6 +38,9 @@ spec:
         autoscaling.knative.dev/min-scale: "2"
         # Limit scaling to 10 pods.
         autoscaling.knative.dev/max-scale: "10"
+    - name: labels
+      value:
+        networking.knative.dev/visibility: "cluster-local"
   env:
     - name: 'PAYMENTS_HOST'
       value: 'payment-service:8080'
