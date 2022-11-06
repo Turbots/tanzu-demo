@@ -1,0 +1,9 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: rabbit
+  namespace: team-tanzu
+spec:
+  replicas: 1
+  imagePullSecrets:
+    - name: tap-registry

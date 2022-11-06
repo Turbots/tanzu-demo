@@ -16,8 +16,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-      id:
-        new_generator_mappings: false
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   cloud:
     stream:
       bindings:

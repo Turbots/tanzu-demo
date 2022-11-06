@@ -1,7 +1,7 @@
 apiVersion: sql.tanzu.vmware.com/v1
 kind: Postgres
 metadata:
-  name: tanzu-demo-database
+  name: account-db
   namespace: team-tanzu
 spec:
   pgConfig:
@@ -31,7 +31,7 @@ spec:
                   - key: postgres-instance
                     operator: In
                     values:
-                      - tanzu-demo-database
+                      - account-db
               topologyKey: kubernetes.io/hostname
             weight: 100
   monitorStorageSize: 1G
@@ -50,7 +50,7 @@ spec:
                   - key: postgres-instance
                     operator: In
                     values:
-                      - tanzu-demo-database
+                      - account-db
               topologyKey: kubernetes.io/hostname
             weight: 100
   resources:

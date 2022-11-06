@@ -1,0 +1,28 @@
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  name: account
+  namespace: team-tanzu
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: payment-demo
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/pipeline: test
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-test-scan-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: account
+    carto.run/workload-namespace: team-tanzu
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: github-secret
+  source:
+    git:
+      ref:
+        branch: main
+      url: https://github.com/Turbots/gitops.git
+    subPath: config/team-tanzu/account

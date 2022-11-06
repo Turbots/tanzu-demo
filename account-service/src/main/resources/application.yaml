@@ -11,6 +11,7 @@ spring:
     name: accounts
   jpa:
     open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   cloud:
     stream:
       bindings:

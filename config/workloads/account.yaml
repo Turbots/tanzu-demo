@@ -1,0 +1,44 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: account
+  namespace: team-tanzu
+  labels:
+    app.kubernetes.io/part-of: payment-demo
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: 'true'
+    apps.tanzu.vmware.com/pipeline: test
+spec:
+  source:
+    git:
+      url: https://github.com/Turbots/tanzu-demo.git
+      ref:
+        branch: main
+    subPath: account-service
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: '17'
+  serviceClaims:
+    - name: db
+      ref:
+        apiVersion: sql.tanzu.vmware.com/v1
+        kind: Postgres
+        name: account-db
+    - name: broker
+      ref:
+        apiVersion: rabbitmq.com/v1beta1
+        kind: RabbitmqCluster
+        name: rabbit
+  params:
+    - name: annotations
+      value:
+        # Target 10 requests in-flight per pod.
+        autoscaling.knative.dev/target: "10"
+        # Disable scale to zero with a min scale of 2 for High Availability.
+        autoscaling.knative.dev/min-scale: "2"
+        # Limit scaling to 10 pods.
+        autoscaling.knative.dev/max-scale: "10"
+  env:
+    - name: 'PAYMENTS_HOST'
+      value: 'payment-service:8080'
