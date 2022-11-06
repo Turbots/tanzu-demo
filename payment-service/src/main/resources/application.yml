@@ -1,5 +1,6 @@
 management:
   endpoints:
+    enabled-by-default: true
     web:
       exposure:
         include: '*'
@@ -15,7 +16,7 @@ spring:
         bootstrap-mode: LAZY
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   cloud:
@@ -24,8 +25,6 @@ spring:
         confirmation-in-0:
           destination: 'confirmations'
           group: 'confirmation-processor'
-  flyway:
-    baseline-on-migrate: true
 tanzu:
   payment:
     rate: 2

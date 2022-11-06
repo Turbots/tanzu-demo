@@ -1,5 +1,6 @@
 management:
   endpoints:
+    enabled-by-default: true
     web:
       exposure:
         include: '*'
@@ -12,6 +13,8 @@ spring:
   jpa:
     open-in-view: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
   cloud:
     stream:
       bindings:
