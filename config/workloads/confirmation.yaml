@@ -1,7 +1,8 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: payment
+  name: confirmation
+  namespace: team-tanzu
   labels:
     app.kubernetes.io/part-of: payment-demo
     apps.tanzu.vmware.com/workload-type: web
@@ -13,7 +14,7 @@ spec:
       url: https://github.com/Turbots/tanzu-demo.git
       ref:
         branch: main
-    subPath: payment-service
+    subPath: confirmation-service
   build:
     env:
       - name: BP_JVM_VERSION
@@ -21,11 +22,6 @@ spec:
       - name: BP_MAVEN_BUILD_ARGUMENTS
         value: '-Dmaven.test.skip=true package'
   serviceClaims:
-    - name: db
-      ref:
-        apiVersion: sql.tanzu.vmware.com/v1
-        kind: Postgres
-        name: payment-db
     - name: broker
       ref:
         apiVersion: rabbitmq.com/v1beta1
@@ -40,9 +36,3 @@ spec:
         autoscaling.knative.dev/min-scale: "2"
         # Limit scaling to 10 pods.
         autoscaling.knative.dev/max-scale: "10"
-    - name: labels
-      value:
-        networking.knative.dev/visibility: "cluster-local"
-  env:
-    - name: 'PAYMENTS_HOST'
-      value: 'payment-service:8080'

@@ -19,6 +19,8 @@ spec:
     env:
       - name: BP_JVM_VERSION
         value: '17'
+      - name: BP_MAVEN_BUILD_ARGUMENTS
+        value: '-Dmaven.test.skip=true package'
   serviceClaims:
     - name: db
       ref:
