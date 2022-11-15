@@ -28,4 +28,4 @@ Consists of three [Spring Boot](https://spring.io) microservices, communicating 
 
 ## Installation
 
-TODO
+Update
