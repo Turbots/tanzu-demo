@@ -19,7 +19,7 @@ metadata:
 spec:
   params:
   - name: gitops_ssh_secret
-    value: github-secret
+    value: git-secret
   source:
     git:
       ref:
