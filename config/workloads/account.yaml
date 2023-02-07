@@ -8,6 +8,7 @@ metadata:
     apps.tanzu.vmware.com/workload-type: web
     apps.tanzu.vmware.com/has-tests: 'true'
     apps.tanzu.vmware.com/pipeline: test
+    apps.tanzu.vmware.com/auto-configure-actuators: "true"
 spec:
   source:
     git:

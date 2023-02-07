@@ -5,3 +5,4 @@
 /argocd
 /config.yml
 /manifests.tgz
+.vscode/

@@ -21,7 +21,7 @@ spec:
           - name: source-revision
         steps:
           - name: test
-            image: harbor.vsphere.hubau.cloud/library/gradle
+            image: projects.registry.vmware.com/library/alpine
             script: |-
               cd `mktemp -d`
 
